@@ -1,100 +1,408 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Nikolas Knapik</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikolas Knapik | Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="pngegg.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Syne:wght@600;700&amp;display=swap" rel="stylesheet">
     <style>
-        body 
-        {
-            font-family: Arial, sans-serif; line-height: 1.6; margin: 40px;
-            background: linear-gradient(135deg, #062060, #002B24);
-            color: #E0E0E0; text-align:justify;
-
-
-        }
-        h1, h2, h3 { color: #E0E0E0; }
-        ul { list-style-type: square; }
-
-        a 
-        {
-            color: #FF5733; 
-            text-decoration: none; 
+        :root {
+            --bg: #f3f8f6;
+            --text: #102623;
+            --muted: #355b55;
+            --surface: rgba(255, 255, 255, 0.72);
+            --surface-strong: rgba(255, 255, 255, 0.9);
+            --border: rgba(16, 38, 35, 0.12);
+            --accent: #0f766e;
+            --accent-strong: #0b5f58;
+            --accent-warm: #ea580c;
         }
 
-        a:hover
-        {
-            color: #C70039; 
-            text-decoration: underline; 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Outfit", sans-serif;
+            line-height: 1.58;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% 10%, #fff1d9 0%, transparent 30%),
+                radial-gradient(circle at 85% 20%, #d7f5ee 0%, transparent 36%),
+                linear-gradient(150deg, #edf7f2 0%, var(--bg) 100%);
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            z-index: 0;
+            border-radius: 50%;
+            filter: blur(58px);
+            pointer-events: none;
+        }
+
+        body::before {
+            width: 260px;
+            height: 260px;
+            right: -70px;
+            top: 70px;
+            background: rgba(15, 118, 110, 0.22);
+        }
+
+        body::after {
+            width: 240px;
+            height: 240px;
+            left: -90px;
+            bottom: 80px;
+            background: rgba(234, 88, 12, 0.18);
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            width: min(1060px, 92vw);
+            margin: 4rem auto;
+            display: grid;
+            gap: 1.1rem;
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            font-family: "Syne", sans-serif;
+            line-height: 1.15;
+            color: var(--text);
+        }
+
+        h1 {
+            margin-top: 0.4rem;
+            margin-bottom: 0.8rem;
+            font-size: clamp(2rem, 4.8vw, 3.25rem);
+        }
+
+        h2 {
+            margin-bottom: 0.75rem;
+            font-size: clamp(1.35rem, 2.3vw, 1.9rem);
+        }
+
+        h3 {
+            margin-bottom: 0.4rem;
+            font-size: 1.08rem;
+        }
+
+        p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        a:hover {
+            color: var(--accent-strong);
+        }
+
+        .panel {
+            padding: 1.3rem 1.4rem;
+            border-radius: 22px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            box-shadow: 0 18px 45px rgba(25, 52, 48, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero {
+            padding: 2rem;
+        }
+
+        .eyebrow {
+            margin: 0;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            max-width: 72ch;
+        }
+
+        .quick-links {
+            margin-top: 1.3rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .pill-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.52rem 0.95rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--surface-strong);
+            color: var(--text);
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .pill-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background: #ffffff;
+            color: var(--text);
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 0.3rem;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.35rem 0.68rem;
+            border-radius: 999px;
+            background: #e5f8f3;
+            border: 1px solid #bfe7de;
+            color: #0b5f58;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .skill-cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .skill-card {
+            padding: 0.9rem 0.95rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--surface-strong);
+        }
+
+        .label {
+            margin-bottom: 0.34rem;
+            display: inline-block;
+            color: var(--muted);
+            font-size: 0.77rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .project {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: var(--surface-strong);
+        }
+
+        .project::after {
+            content: "";
+            position: absolute;
+            right: -45px;
+            bottom: -85px;
+            width: 165px;
+            height: 165px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(15, 118, 110, 0.2), transparent 68%);
+        }
+
+        .list-clean {
+            margin: 0.25rem 0 0;
+            padding-left: 1.1rem;
+        }
+
+        .list-clean li {
+            margin: 0.42rem 0;
+            color: var(--muted);
+        }
+
+        .project-link {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .grid-two {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.1rem;
+        }
+
+        .highlight {
+            color: var(--accent-warm);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: reveal 0.75s cubic-bezier(0.2, 0.65, 0.25, 1) forwards;
+            animation-delay: var(--delay, 0ms);
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            main {
+                margin: 2.2rem auto 2.8rem;
+            }
+
+            .hero {
+                padding: 1.55rem;
+            }
+
+            .panel {
+                padding: 1.05rem 1.1rem;
+            }
+
+            .project-grid,
+            .skill-cards,
+            .grid-two {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-    <link rel="icon" type="image/x-icon" href="pngegg.png"> 
 </head>
 <body>
-    <h1>Nikolas Knapik</h1>
-    <p>I'm a <strong>computer science student at FIIT STU Bratislava</strong>, currently in my second year. 
-        <br> I enjoy working on <strong>software development projects</strong> that challenge me to learn new technologies and 
-        improve my problem-solving skills.</p>
+    <main>
+        <header class="panel hero reveal" style="--delay: 0ms;">
+            <p class="eyebrow">Computer Science Student</p>
+            <h1>Nikolas Knapik</h1>
+            <p>
+                I am a second-year computer science student at FIIT STU Bratislava, focused on building practical software and
+                learning fast through projects in AI, networking, and web development.
+            </p>
+            <div class="quick-links">
+                <a class="pill-link" href="https://github.com/nikolasknapik" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+                <a class="pill-link" href="mailto:nikolasknapik3@gmail.com">Email Me</a>
+            </div>
+        </header>
 
-    <h2> Achievements & Certifications</h2>
-    <ul>
-        <li>C1 english certificate</li>
-    </ul>
-    <h2> Education & Skills</h2>
-    <ul>
-        <li><strong>Degree:</strong> Studying Informatics at FIIT STU in Bratislava</li> 
-        <li><strong>Specialization:</strong> Interested in AI, networking and web development</li>
-        <li><strong>Programming Languages:</strong> Python, C, C++, Java, JavaScript</li>
-        <li><strong>Tools & Technologies:</strong> Git, Linux, Wireshark, Packet Tracer</li>
-        <li><strong>AI & Machine Learning:</strong> Neural networks, clustering algorithms, reinforcement learning</li>
-    </ul>
-    
-    <h2> Projects</h2>
-    <h3>🔹 P2P Network Protocol Over UDP</h3>
-    <ul>
-        <li>Designed and implemented a <strong>custom P2P communication protocol</strong> built on <strong>UDP</strong>.</li> 
-        <li>Defined <strong>packet structures, error handling, and a stop-and-wait mechanism</strong>.</li>
-        <li>Verified the protocol using <strong>Wireshark</strong> to analyze network traffic.</li>
-        <li> Check out my project on this link <a href = "https://github.com/nikolasknapik/P2P-komunikacia"> P2P-komunikacia</a></li>
-    </ul>
-    
-    <h3>🔹 AI Clustering Algorithm</h3>
-    <ul>
-        <li>Developed an <strong>agglomerative clustering algorithm</strong> using <strong>centroid and medoid approaches</strong>.</li>
-        <li>Handled <strong>large-scale data (20,000+ points)</strong> efficiently.</li>
-        <li>Visualized results and documented the entire process.</li>
-        <li> Check out my project on this link <a href = "https://github.com/nikolasknapik/Clustering_algorithm">AI clustering algorithm</a>
-    </ul>
+        <section class="panel reveal" style="--delay: 100ms;">
+            <h2>Achievements <span class="highlight">&amp;</span> Certifications</h2>
+            <div class="chips">
+                <span class="chip">C1 English Certificate</span>
+            </div>
+        </section>
 
-    <h3>🔹 Neural Network </h3>
-    <ul>
-        <li>Implemented a <strong>neural network from scratch</strong> using <strong>Python</strong> and <strong>NumPy</strong>.</li>
-        <li>Trained the network on the <strong>MNIST dataset</strong> to recognize handwritten digits.</li>
-        <li>Optimized the network using <strong>backpropagation and gradient descent</strong>.</li>
-        <li> Check out my project on this link <a href = "https://github.com/nikolasknapik/Neural_Network">Neural Network</a> </li>
-    </ul>
+        <section class="panel reveal" style="--delay: 180ms;">
+            <h2>Education <span class="highlight">&amp;</span> Skills</h2>
+            <div class="skill-cards">
+                <article class="skill-card">
+                    <span class="label">Degree</span>
+                    <p>Studying Informatics at FIIT STU in Bratislava.</p>
+                </article>
+                <article class="skill-card">
+                    <span class="label">Specialization</span>
+                    <p>Interested in AI, networking, and web development.</p>
+                </article>
+                <article class="skill-card">
+                    <span class="label">Programming Languages</span>
+                    <p>Python, C, C++, Java, JavaScript.</p>
+                </article>
+                <article class="skill-card">
+                    <span class="label">Tools and Technologies</span>
+                    <p>Git, Linux, Wireshark, Packet Tracer.</p>
+                </article>
+                <article class="skill-card">
+                    <span class="label">AI and Machine Learning</span>
+                    <p>Neural networks, clustering algorithms, reinforcement learning.</p>
+                </article>
+            </div>
+        </section>
 
-        <h3>🔹 Turn-based Database Game</h3>
-    <ul>
-        <li>Created a <strong>turn-based strategy game</strong> with <strong>database integration</strong> for storing and managing game state.</li>
-        <li>Designed the <strong>database schema</strong> to efficiently handle game entities, actions, and player data.</li>
-        <li>Implemented game logic in <strong>C</strong> with interaction via SQL queries for persistent gameplay.</li>
-        <li>Check out my project on this link <a href="https://github.com/nikolasknapik/Turn_based_database_game">Turn-based Database Game</a></li>
-    </ul>
+        <section class="panel reveal" style="--delay: 260ms;">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <article class="project">
+                    <h3>P2P Network Protocol over UDP</h3>
+                    <ul class="list-clean">
+                        <li>Designed and implemented a custom P2P communication protocol over UDP.</li>
+                        <li>Defined packet structures, error handling, and stop-and-wait mechanisms.</li>
+                        <li>Verified behavior with Wireshark traffic analysis.</li>
+                    </ul>
+                    <a class="project-link" href="https://github.com/nikolasknapik/P2P-komunikacia" target="_blank" rel="noopener noreferrer">View repository</a>
+                </article>
 
-    
-    <h2> Interests</h2>
-    <ul>
-        <li><strong>Artificial Intelligence:</strong> Understanding neural networks and reinforcement learning.</li>
-        <li><strong>Networking:</strong> Exploring advanced networking concepts and security.</li>
-    </ul>
-    
-    <h2> Contact</h2>
-    <ul>
-        <li><strong>GitHub:</strong> <a href="https://github.com/nikolasknapik">github/nikolasknapik</a></li>
-        <li><strong>Email:nikolasknapik3@gmail.com</li>
-    </ul>
-    
+                <article class="project">
+                    <h3>AI Clustering Algorithm</h3>
+                    <ul class="list-clean">
+                        <li>Developed an agglomerative clustering algorithm with centroid and medoid approaches.</li>
+                        <li>Handled datasets with over 20,000 points efficiently.</li>
+                        <li>Visualized and documented clustering results.</li>
+                    </ul>
+                    <a class="project-link" href="https://github.com/nikolasknapik/Clustering_algorithm" target="_blank" rel="noopener noreferrer">View repository</a>
+                </article>
+
+                <article class="project">
+                    <h3>Neural Network from Scratch</h3>
+                    <ul class="list-clean">
+                        <li>Implemented a neural network in Python and NumPy.</li>
+                        <li>Trained on MNIST for handwritten digit recognition.</li>
+                        <li>Optimized with backpropagation and gradient descent.</li>
+                    </ul>
+                    <a class="project-link" href="https://github.com/nikolasknapik/Neural_Network" target="_blank" rel="noopener noreferrer">View repository</a>
+                </article>
+
+                <article class="project">
+                    <h3>Turn-Based Database Game</h3>
+                    <ul class="list-clean">
+                        <li>Created a turn-based strategy game with persistent database state.</li>
+                        <li>Designed schema for entities, actions, and player records.</li>
+                        <li>Implemented core game logic in C with SQL-driven interactions.</li>
+                    </ul>
+                    <a class="project-link" href="https://github.com/nikolasknapik/Turn_based_database_game" target="_blank" rel="noopener noreferrer">View repository</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="grid-two reveal" style="--delay: 340ms;">
+            <div class="panel">
+                <h2>Interests</h2>
+                <ul class="list-clean">
+                    <li><strong>Artificial Intelligence:</strong> Understanding neural networks and reinforcement learning.</li>
+                    <li><strong>Networking:</strong> Exploring advanced networking concepts and security.</li>
+                </ul>
+            </div>
+            <div class="panel">
+                <h2>Contact</h2>
+                <ul class="list-clean">
+                    <li><strong>GitHub:</strong> <a href="https://github.com/nikolasknapik" target="_blank" rel="noopener noreferrer">github.com/nikolasknapik</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:nikolasknapik3@gmail.com">nikolasknapik3@gmail.com</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
-
