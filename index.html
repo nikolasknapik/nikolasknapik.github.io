@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="pngegg.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Syne:wght@600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Syne:wght@600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #f3f8f6;
@@ -28,8 +28,8 @@
         body {
             margin: 0;
             min-height: 100vh;
-            font-family: "Outfit", sans-serif;
-            line-height: 1.58;
+            font-family: "Manrope", sans-serif;
+            line-height: 1.48;
             color: var(--text);
             background:
                 radial-gradient(circle at 10% 10%, #fff1d9 0%, transparent 30%),
@@ -66,7 +66,7 @@
         main {
             position: relative;
             z-index: 1;
-            width: min(1060px, 92vw);
+            width: min(940px, 92vw);
             margin: 4rem auto;
             display: grid;
             gap: 1.1rem;
@@ -212,22 +212,10 @@
 
         .project {
             position: relative;
-            overflow: hidden;
             padding: 1rem;
             border-radius: 18px;
             border: 1px solid var(--border);
             background: var(--surface-strong);
-        }
-
-        .project::after {
-            content: "";
-            position: absolute;
-            right: -45px;
-            bottom: -85px;
-            width: 165px;
-            height: 165px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(15, 118, 110, 0.2), transparent 68%);
         }
 
         .list-clean {
@@ -238,6 +226,7 @@
         .list-clean li {
             margin: 0.42rem 0;
             color: var(--muted);
+            max-width: 62ch;
         }
 
         .project-link {
@@ -321,7 +310,7 @@
             <div class="skill-cards">
                 <article class="skill-card">
                     <span class="label">Degree</span>
-                    <p>Studying Informatics at FIIT STU in Bratislava.</p>
+                    <p>Studying Informatics at FIIT STU in Bratislava (3rd year).</p>
                 </article>
                 <article class="skill-card">
                     <span class="label">Specialization</span>
